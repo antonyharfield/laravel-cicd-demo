@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: edbizarro/gitlab-ci-pipeline-php:7.2
+    working_directory: /var/www/html
+steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - vendor-{{ checksum "composer.json" }}
+      - run: composer update --no-interaction --no-progress --prefer-dist --optimize-autoloader --ignore-platform-reqs
+      - save_cache:
+          paths:
+            - ./vendor
+          key: vendor-{{ checksum "composer.json" }}      
+      - run: php artisan config:cache
+      - run: php artisan route:cache
+      - run: php artisan migrate --seed
+      - run: ./vendor/bin/phpunit
+workflows:
+  version: 2 
+  deploy:
+    jobs:
+      - test
