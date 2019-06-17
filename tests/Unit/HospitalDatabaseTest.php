@@ -10,8 +10,6 @@ use App\Hospital;
 class HospitalDatabaseTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
-
-    //public $mockConsoleOutput = false;
     
     protected function setUp(): void
     {
