@@ -15,6 +15,7 @@ jobs:
             - ./vendor
           key: vendor-{{ checksum "composer.json" }}      
       - run: php artisan config:cache
+      - run: touch storage/test.sqlite ; chmod -R 777 storage
       - run: php artisan migrate --seed --env=testing
       - run: ./vendor/bin/phpunit
 workflows:
