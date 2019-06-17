@@ -15,7 +15,6 @@ jobs:
             - ./vendor
           key: vendor-{{ checksum "composer.json" }}      
       - run: php artisan config:cache
-      - run: php artisan route:cache
       - run: php artisan migrate --seed
       - run: ./vendor/bin/phpunit
 workflows:
