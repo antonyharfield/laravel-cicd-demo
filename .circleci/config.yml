@@ -16,8 +16,10 @@ jobs:
           key: vendor-{{ checksum "composer.json" }}      
       - run: php artisan config:cache
       - run: touch storage/test.sqlite ; chmod -R 777 storage
-      - run: php artisan migrate --seed --env=testing
+      - run: php artisan migrate --seed --env=testing --force
       - run: ./vendor/bin/phpunit
+      - store_test_results:
+          path: tests/_output
 workflows:
   version: 2 
   deploy:
