@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateHospitalsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('hospitals', function (Blueprint $table) {
