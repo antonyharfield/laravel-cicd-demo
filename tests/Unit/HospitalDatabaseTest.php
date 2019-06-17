@@ -89,7 +89,7 @@ class HospitalDatabaseTest extends TestCase
 
         // Assert
         $currentRows = Hospital::count();
-        $this->assertEquals($previousRows + 1, $currentRows);
+        $this->assertEquals($previousRows, $currentRows);
     }
 
 }
