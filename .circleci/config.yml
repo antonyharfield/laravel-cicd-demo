@@ -3,7 +3,7 @@ jobs:
   test:
     docker:
       - image: edbizarro/gitlab-ci-pipeline-php:7.2
-      - working_directory: /var/www/html
+    working_directory: /var/www/html
     steps:
       - checkout
       - restore_cache:
